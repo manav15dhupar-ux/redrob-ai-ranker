@@ -1,8 +1,9 @@
 import json
+FILE_PATH = "../data/candidates.jsonl"
 
 count = 0
 
-for line in open("candidates.jsonl"):
+for line in open(FILE_PATH):
     c = json.loads(line)
 
     exp = c["profile"]["years_of_experience"]

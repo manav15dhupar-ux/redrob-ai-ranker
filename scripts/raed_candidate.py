@@ -1,6 +1,9 @@
 # import json
+# FILE_PATH = "../data/candidates.jsonl"
 
-# with open("candidates.jsonl", "r") as f:
+
+
+# with open(FILE_PATH, "r") as f:
 #     for i in range(10):   # First 10 candidates
 #         candidate = json.loads(next(f))
 
@@ -27,7 +30,7 @@
 # ]
 # count = 0
 
-# with open("candidates.jsonl", "r") as f:
+# with open(FILE_PATH, "r") as f:
 #     for line in f:
 #         candidate = json.loads(line)
 
@@ -52,7 +55,7 @@
 
 # count = 0
 
-# with open("candidates.jsonl", "r") as f:
+# with open(FILE_PATH, "r") as f:
 #     for line in f:
 #         candidate = json.loads(line)
 
@@ -81,7 +84,7 @@
 
 # count = 0
 
-# with open("candidates.jsonl", "r") as f:
+# with open(FILE_PATH, "r") as f:
 #     for line in f:
 #         candidate = json.loads(line)
 
@@ -117,7 +120,7 @@
 
 # found = 0
 
-# with open("candidates.jsonl", "r") as f:
+# with open(FILE_PATH, "r") as f:
 #     for line in f:
 #         candidate = json.loads(line)
 
@@ -152,7 +155,7 @@
 
 # target_id = "CAND_0066999"
 
-# with open("candidates.jsonl", "r") as f:
+# with open(FILE_PATH, "r") as f:
 #     for line in f:
 #         candidate = json.loads(line)
 
@@ -168,7 +171,7 @@
 
 # count = 0
 
-# with open("candidates.jsonl") as f:
+# with open(FILE_PATH) as f:
 #     for line in f:
 #         c = json.loads(line)
 
@@ -203,7 +206,7 @@
 
 # candidates = []
 
-# with open("candidates.jsonl") as f:
+# with open(FILE_PATH) as f:
 #     for line in f:
 #         c = json.loads(line)
 

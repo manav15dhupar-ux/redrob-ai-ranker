@@ -1,4 +1,6 @@
 import json
+FILE_PATH = "../data/candidates.jsonl"
+
 
 def title_score(title):
 
@@ -80,7 +82,7 @@ def experience_score(exp):
     return 0
 
 
-with open("candidates.jsonl", "r") as f:
+with open(FILE_PATH, "r") as f:
 
     candidate = json.loads(next(f))
 

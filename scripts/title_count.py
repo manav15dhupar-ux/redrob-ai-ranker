@@ -1,8 +1,10 @@
 import json
+FILE_PATH = "../data/candidates.jsonl"
+
 
 title_count = {}
 
-with open("candidates.jsonl") as f:
+with open(FILE_PATH) as f:
     for line in f:
         c = json.loads(line)
 

@@ -1,8 +1,10 @@
 import json
+FILE_PATH = "../data/candidates.jsonl"
+
 
 scores = []
 
-for line in open("candidates.jsonl", "r"):
+for line in open(FILE_PATH, "r"):
 
     candidate = json.loads(line)
 
