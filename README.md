@@ -1,91 +1,73 @@
-# 🚀 Redrob Hackathon 2026
+# Redrob Hackathon 2026 – AI Candidate Ranking System
 
-Building an AI-powered candidate ranking system using Python and recruiter signals.
+## Overview
 
-## 📌 Project Goal
+This repository contains my solution for the Redrob Hackathon 2026.
 
-Identify and rank the best candidates for a given Job Description (JD) using:
+The goal is to identify and rank the most relevant candidates for an AI Search & Recommendation Systems role using candidate profiles, skills, experience, and recruiter signals.
 
-- Experience
-- Current Title
-- Skills
-- GitHub Activity
+The ranking system evolved through multiple versions (V1 → V9), with each version improving candidate selection quality and ranking accuracy.
+
+---
+
+## Project Objective
+
+Build an explainable candidate ranking system that:
+
+- Identifies strong AI/ML candidates
+- Rewards relevant Search and Recommendation experience
+- Utilizes recruiter behavior signals
+- Prioritizes retrieval-focused skills
+- Produces a ranked candidate list with transparent scoring
+
+---
+
+## Dataset
+
+Provided files:
+
+- candidates.jsonl
+- candidate_schema.json
+- sample_candidates.json
+- sample_submission.csv
+- submission_template.yml
+- submission_spec.md
+- redrob_signals.md
+
+---
+
+## Ranking Features
+
+### Experience Score
+
+Candidates with experience closest to the job requirements receive higher scores.
+
+### Title Score
+
+Higher weight assigned to:
+
+- Recommendation Systems Engineer
+- Search Engineer
+- AI Engineer
+- NLP Engineer
+- Machine Learning Engineer
+- Applied ML Engineer
+
+### Recruiter Signals
+
+Used signals include:
+
+- GitHub Activity Score
 - Recruiter Response Rate
 - Notice Period
-- Open To Work Status
+- Open To Work Flag
 - Interview Completion Rate
-- Profile Completeness
-- Recruiter Interest Signals
+- Saved By Recruiters (30 Days)
+- Profile Completeness Score
 
----
+### Skill Matching
 
-## 🗂️ Dataset
-
-Files provided by Redrob:
-
-- `candidates.jsonl`
-- `candidate_schema.json`
-- `sample_submission.csv`
-- `validate_submission.py`
-- `redrob_signals_doc`
-
----
-
-## 🛠️ Progress Log
-
-### ✅ Dataset Exploration
-
-- Understood JSONL format
-- Explored candidate schema
-- Inspected candidate profiles manually
-- Analyzed recruiter signals
-
-### ✅ Candidate Analysis
-
-- Counted candidate titles
-- Analyzed experience distribution
-- Identified AI/ML candidates
-- Investigated potential honeypot profiles
-
----
-
-## 🧠 Ranking Engine Versions
-
-### V1 - Basic Filtering
-
-- Experience filter
-- AI/ML title filter
-
-### V2 - Title Ranking
-
-- Added title relevance scoring
-
-### V3 - JD Skill Matching
-
-- Matched candidates against required skills
-
-### V4 - Candidate Scoring
-
-Included:
-
-- Experience
-- Title relevance
-- GitHub score
-- Response rate
-- Notice period
-
-### V5 - Recruiter Signals
-
-Added:
-
-- Open To Work
-- Interview Completion Rate
-- Saved By Recruiters
-- Profile Completeness
-
-### V6 - Advanced Skill Matching
-
-Added support for:
+Core skills evaluated:
 
 - Embeddings
 - Sentence Transformers
@@ -98,70 +80,149 @@ Added support for:
 - Semantic Search
 - Recommendation Systems
 - Information Retrieval
-- Learning To Rank
+- Learning to Rank
 - RAG
 - PEFT
 - LoRA
 - QLoRA
 
-### V7 - Skill Quality Scoring
+### Retrieval Bonus
 
-Added:
+Additional weight assigned for:
 
-- Skill proficiency scoring
-- Skill duration scoring
-- Critical skill bonuses
+- Embeddings
+- Information Retrieval
+- Learning to Rank
+- Semantic Search
+- BM25
+- Recommendation Systems
 
----
+### Critical Skill Bonus
 
-## 🔍 Key Findings
+Additional scoring for:
 
-- Recommendation Systems Engineers consistently rank highly.
-- Search Engineers closely match the JD.
-- Skill quality matters more than skill count.
-- Notice period strongly impacts hiring practicality.
-- GitHub activity alone is not enough to rank candidates.
-
----
-
-## 📈 Current Status
-
-| Task | Status |
-|--------|--------|
-| Dataset Understanding | ✅ |
-| Candidate Exploration | ✅ |
-| Candidate Inspection | ✅ |
-| Ranking Engine V1 | ✅ |
-| Ranking Engine V2 | ✅ |
-| Ranking Engine V3 | ✅ |
-| Ranking Engine V4 | ✅ |
-| Ranking Engine V5 | ✅ |
-| Ranking Engine V6 | ✅ |
-| Ranking Engine V7 | ✅ |
-| Top Candidate Validation | ✅ |
-| Submission Generation | ⏳ |
-| Final Validation | ⏳ |
+- Embeddings
+- Information Retrieval
+- Learning to Rank
+- Recommendation Systems
 
 ---
 
-## 🎯 Next Steps
+## Evolution of the Ranking System
 
-- Build V8 ranking improvements
-- Build V9 submission generator
-- Validate submission
-- Final leaderboard submission
+### V1
+Basic filtering using experience and titles.
+
+### V2
+Improved title relevance matching.
+
+### V3
+Introduced recruiter signals.
+
+### V4
+Implemented weighted candidate scoring.
+
+### V5
+Added interview completion and recruiter engagement signals.
+
+### V6
+Expanded retrieval and recommendation skill coverage.
+
+### V7
+Introduced stronger ranking prioritization and tie-breaking.
+
+### V8
+Improved signal balancing and ranking stability.
+
+### V9
+Final retrieval-focused ranking strategy with advanced skill weighting.
+
+Detailed evolution available in:
+
+```text
+docs/evolution_v1_v9.md
+```
 
 ---
 
-## 📅 Submission Deadline
+## Project Structure
 
-**2 July 2026**
+```text
+Redrob-Hackathon-2026/
+│
+├── data/
+│   └── candidates.jsonl
+│
+├── scripts/
+│   ├── v1.py
+│   ├── v2.py
+│   ├── v3.py
+│   ├── v4.py
+│   ├── v5.py
+│   ├── v6.py
+│   ├── v7.py
+│   ├── v8.py
+│   ├── v9.py
+│   └── generate_submission.py
+│
+├── docs/
+│   ├── methodology.md
+│   ├── findings.md
+│   └── evolution_v1_v9.md
+│
+├── submission.csv
+├── submission_metadata.yaml
+└── README.md
+```
 
 ---
 
-## 👨‍💻 Author
+## Key Findings
+
+- Retrieval-focused candidates consistently ranked highest.
+- Strong recruiter signals improved candidate quality.
+- Low notice period candidates received additional preference.
+- GitHub activity acted as a useful quality indicator.
+- Retrieval and recommendation skills were highly predictive of relevance.
+
+Detailed findings available in:
+
+```text
+docs/findings.md
+```
+
+---
+
+## Methodology
+
+Detailed methodology available in:
+
+```text
+docs/methodology.md
+```
+
+---
+
+## Reproducing Results
+
+Run:
+
+```bash
+python scripts/v9.py
+```
+
+Generate submission:
+
+```bash
+python scripts/generate_submission.py
+```
+
+---
+
+## Author
 
 **Manav Dhupar**
 
-B.Tech AI/ML Student  
-Aspiring ML Engineer | Python Developer | Hackathon Enthusiast
+B.Tech AI/ML Student
+
+Redrob Hackathon 2026 Participant
