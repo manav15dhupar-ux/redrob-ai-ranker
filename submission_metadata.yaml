@@ -1,0 +1,49 @@
+team_name: "Straw hat luffy"
+
+primary_contact:
+  name: "Manav Dhupar"
+  email: "manav15dhupar@gmail.com"
+  phone: "7385830185"
+
+team_members:
+  - name: "Manav Dhupar"
+    email: "manav15dhupar@gmail.com"
+    role: "ML Engineer"
+
+github_repo: https://github.com/manav15dhupar-ux/redrob-ai-ranker
+
+sandbox_link: "N/A"
+
+reproduce_command: "python scripts/generate_submission.py"
+
+compute:
+  platform: "MacBook"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.x"
+  os: "macOS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "ChatGPT"
+
+ai_usage_summary: |
+  Used ChatGPT for debugging, code review,
+  scoring design discussions and documentation.
+
+methodology_summary: |
+  Rule-based retrieval-focused candidate ranking system.
+  Candidates are scored using title relevance,
+  experience, recruiter engagement signals,
+  GitHub activity, notice period, retrieval skill
+  coverage and skill proficiency.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
