@@ -334,10 +334,10 @@ scores.sort(
 # PRINT TOP 10
 # =====================
 
-print("TOP 10 CANDIDATES")
+print("TOP 100 CANDIDATES")
 print("-" * 80)
 
-for row in scores[:10]:
+for row in scores[:100]:
 
     print(
         row[1],
