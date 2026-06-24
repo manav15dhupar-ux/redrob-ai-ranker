@@ -1,228 +1,193 @@
-# Redrob Hackathon 2026 – AI Candidate Ranking System
+Redrob AI Ranker
 
-## Overview
+AI-powered candidate ranking system developed by Team Straw Hat Luffy for the Redrob AI Hiring Challenge.
 
-This repository contains my solution for the Redrob Hackathon 2026.
+Overview
 
-The goal is to identify and rank the most relevant candidates for an AI Search & Recommendation Systems role using candidate profiles, skills, experience, and recruiter signals.
+Redrob AI Ranker is a candidate ranking system designed to identify the most suitable candidates for a Senior AI Engineer role.
 
-The ranking system evolved through multiple versions (V1 → V9), with each version improving candidate selection quality and ranking accuracy.
+The solution evaluates candidates using a multi-factor scoring framework that combines:
 
----
+* Experience relevance
+* Current role relevance
+* Industry fit
+* GitHub activity
+* Recruiter engagement signals
+* Notice period
+* Interview completion history
+* Profile completeness
+* Job-description skill matching
+* Retrieval and recommendation-system expertise
 
-## Project Objective
+The final output is a ranked list of the Top 100 candidates along with transparent reasoning for every ranking decision.
 
-Build an explainable candidate ranking system that:
+⸻
 
-- Identifies strong AI/ML candidates
-- Rewards relevant Search and Recommendation experience
-- Utilizes recruiter behavior signals
-- Prioritizes retrieval-focused skills
-- Produces a ranked candidate list with transparent scoring
+Problem Statement
 
----
+The objective is to rank candidates for a Senior AI Engineer position specializing in:
 
-## Dataset
+* Retrieval Systems
+* Recommendation Systems
+* Semantic Search
+* Information Retrieval
+* Vector Databases
+* RAG Pipelines
+* Learning-to-Rank Systems
 
-Provided files:
+The system must identify candidates who demonstrate both technical expertise and strong hiring-readiness signals.
 
-- candidates.jsonl
-- candidate_schema.json
-- sample_candidates.json
-- sample_submission.csv
-- submission_template.yml
-- submission_spec.md
-- redrob_signals.md
+⸻
 
----
+Ranking Methodology
 
-## Ranking Features
+The ranking pipeline evaluates candidates across multiple dimensions:
 
-### Experience Score
+Experience Fit
 
-Candidates with experience closest to the job requirements receive higher scores.
+Candidates with experience closest to the target range receive higher scores.
 
-### Title Score
+Title Relevance
 
-Higher weight assigned to:
+Current roles closely aligned with the target position receive additional weight.
 
-- Recommendation Systems Engineer
-- Search Engineer
-- AI Engineer
-- NLP Engineer
-- Machine Learning Engineer
-- Applied ML Engineer
+Examples:
 
-### Recruiter Signals
+* Recommendation Systems Engineer
+* Search Engineer
+* Applied ML Engineer
+* Senior AI Engineer
+* Machine Learning Engineer
+* NLP Engineer
 
-Used signals include:
+Industry Fit
 
-- GitHub Activity Score
-- Recruiter Response Rate
-- Notice Period
-- Open To Work Flag
-- Interview Completion Rate
-- Saved By Recruiters (30 Days)
-- Profile Completeness Score
+Candidates from software, SaaS, internet, and e-commerce industries receive positive weighting.
 
-### Skill Matching
+Recruiter Signals
 
-Core skills evaluated:
+Behavioral hiring signals are incorporated, including:
 
-- Embeddings
-- Sentence Transformers
-- OpenSearch
-- BM25
-- Qdrant
-- Pinecone
-- Weaviate
-- FAISS
-- Semantic Search
-- Recommendation Systems
-- Information Retrieval
-- Learning to Rank
-- RAG
-- PEFT
-- LoRA
-- QLoRA
+* Recruiter response rate
+* Interview completion rate
+* Open-to-work status
+* Saved by recruiters count
+* Profile completeness
 
-### Retrieval Bonus
+GitHub Activity
 
-Additional weight assigned for:
+GitHub activity score is used as a proxy for engineering engagement and technical contribution.
 
-- Embeddings
-- Information Retrieval
-- Learning to Rank
-- Semantic Search
-- BM25
-- Recommendation Systems
+Skill Matching
 
-### Critical Skill Bonus
+Skills are matched against the job requirements including:
 
-Additional scoring for:
+* Embeddings
+* Sentence Transformers
+* BM25
+* OpenSearch
+* Pinecone
+* Qdrant
+* Weaviate
+* FAISS
+* Semantic Search
+* Information Retrieval
+* Recommendation Systems
+* Learning to Rank
+* RAG
+* LoRA
+* QLoRA
+* PEFT
 
-- Embeddings
-- Information Retrieval
-- Learning to Rank
-- Recommendation Systems
+Retrieval Expertise Bonus
 
----
+Additional bonuses are assigned to candidates demonstrating strong retrieval-system expertise.
 
-## Evolution of the Ranking System
+Critical Skill Bonus
 
-### V1
-Basic filtering using experience and titles.
+Higher weights are assigned to:
 
-### V2
-Improved title relevance matching.
+* Embeddings
+* Information Retrieval
+* Learning to Rank
+* Recommendation Systems
 
-### V3
-Introduced recruiter signals.
+⸻
 
-### V4
-Implemented weighted candidate scoring.
+Project Structure
 
-### V5
-Added interview completion and recruiter engagement signals.
-
-### V6
-Expanded retrieval and recommendation skill coverage.
-
-### V7
-Introduced stronger ranking prioritization and tie-breaking.
-
-### V8
-Improved signal balancing and ranking stability.
-
-### V9
-Final retrieval-focused ranking strategy with advanced skill weighting.
-
-Detailed evolution available in:
-
-```text
-docs/evolution_v1_v9.md
-```
-
----
-
-## Project Structure
-
-```text
-Redrob-Hackathon-2026/
-│
+redrob-ai-ranker/
 ├── data/
-│   └── candidates.jsonl
-│
-├── scripts/
-│   ├── v1.py
-│   ├── v2.py
-│   ├── v3.py
-│   ├── v4.py
-│   ├── v5.py
-│   ├── v6.py
-│   ├── v7.py
-│   ├── v8.py
-│   ├── v9.py
-│   └── generate_submission.py
-│
 ├── docs/
-│   ├── methodology.md
-│   ├── findings.md
-│   └── evolution_v1_v9.md
-│
-├── submission.csv
+├── scripts/
 ├── submission_metadata.yaml
 └── README.md
-```
 
----
+⸻
 
-## Key Findings
+Output Format
 
-- Retrieval-focused candidates consistently ranked highest.
-- Strong recruiter signals improved candidate quality.
-- Low notice period candidates received additional preference.
-- GitHub activity acted as a useful quality indicator.
-- Retrieval and recommendation skills were highly predictive of relevance.
+The final output is generated in CSV format:
 
-Detailed findings available in:
+candidate_id,rank,score,reasoning
 
-```text
-docs/findings.md
-```
+Each candidate receives:
 
----
+* Rank
+* Final score
+* Human-readable reasoning
 
-## Methodology
+⸻
 
-Detailed methodology available in:
-
-```text
-docs/methodology.md
-```
-
----
-
-## Reproducing Results
-
-Run:
-
-```bash
-python scripts/v9.py
-```
+Reproducibility
 
 Generate submission:
 
-```bash
 python scripts/generate_submission.py
-```
 
----
+Validate submission:
 
-## Author
+python scripts/validate_submission.py submission.csv
 
-**Manav Dhupar**
+⸻
 
-B.Tech AI/ML Student
+Live Demo
 
-Redrob Hackathon 2026 Participant
+Streamlit Application:
+
+https://redrob-ai-ranker-63refykqyydt9n98nvyco6.streamlit.app/
+
+⸻
+
+GitHub Repository
+
+https://github.com/manav15dhupar-ux/redrob-ai-ranker
+
+⸻
+
+Technology Stack
+
+* Python
+* Streamlit
+* JSONL
+* CSV
+
+⸻
+
+Team
+
+Team Name: Straw Hat Luffy
+
+⸻
+
+Submission Status
+
+✅ Ranking Engine Complete
+
+✅ Submission CSV Generated
+
+✅ Submission Validator Passed
+
+✅ Streamlit Demo Deployed
+
+✅ Documentation Completed

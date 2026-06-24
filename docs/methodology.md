@@ -2,44 +2,51 @@ Methodology
 
 Objective
 
-The objective was to rank candidates for a retrieval-focused AI/ML role using structured profile information and behavioral hiring signals.
+The objective of this project is to identify and rank the most suitable candidates for a Senior AI Engineer role focused on retrieval systems, recommendation systems, semantic search, and modern AI infrastructure.
+
+The challenge requires selecting the Top 100 candidates from the provided candidate pool while maximizing relevance to the target job description.
 
 ⸻
 
-Data Sources
+Approach
 
-Candidate information was extracted from:
+A rule-based ranking framework was developed to evaluate candidates across multiple dimensions.
 
-* Candidate profile data
-* Skills data
+The system combines:
+
 * Professional experience
-* Redrob recruiter signals
+* Current job role
+* Industry relevance
+* Technical skills
+* Recruiter engagement signals
+* Hiring readiness indicators
+
+Each candidate receives a final score based on weighted contributions from these factors.
 
 ⸻
 
-Ranking Approach
+Feature Engineering
 
-A rule-based scoring system was developed incrementally from Version 1 to Version 9.
+1. Experience Scoring
 
-Each candidate received a score based on multiple dimensions.
+The target role requires approximately 6–8 years of experience.
 
-⸻
+Scoring priorities:
 
-Scoring Components
+Experience Range	Score
+6–8 years	        Highest
+5–9 years	        Medium
+Others	            Lower
 
-Experience
-
-Preferred range:
-
-* 5 to 9 years
-
-Higher scores were awarded to candidates within the target experience range.
+This ensures candidates closely matching the hiring requirements receive priority.
 
 ⸻
 
-Title Relevance
+2. Job Title Relevance
 
-Priority titles included:
+Current job titles provide a strong signal regarding candidate suitability.
+
+Examples of highly weighted titles:
 
 * Recommendation Systems Engineer
 * Search Engineer
@@ -48,90 +55,165 @@ Priority titles included:
 * Machine Learning Engineer
 * NLP Engineer
 
-⸻
-
-Recruiter Signals
-
-Behavioral signals included:
-
-* GitHub Activity Score
-* Recruiter Response Rate
-* Notice Period
-* Open To Work Status
-* Interview Completion Rate
-* Saved By Recruiters
-* Profile Completeness
+Candidates already working in relevant domains are considered more likely to succeed in the target role.
 
 ⸻
 
-Skill Matching
+3. Industry Relevance
 
-Candidates were evaluated against key job-description skills.
+Candidates from industries closely aligned with modern AI systems receive additional weighting.
 
-Examples:
+Preferred industries:
+
+* Software
+* SaaS
+* Internet
+* Consumer Internet
+* E-commerce
+
+Lower weighting is assigned to consulting and generic IT service roles.
+
+⸻
+
+4. GitHub Activity
+
+GitHub activity is used as an indicator of technical engagement and engineering contribution.
+
+Higher GitHub scores receive higher ranking weights.
+
+This helps identify candidates actively involved in development work.
+
+⸻
+
+5. Recruiter Signals
+
+Several Redrob-provided behavioral signals are incorporated:
+
+Recruiter Response Rate
+
+Measures candidate responsiveness.
+
+Open To Work
+
+Indicates active job-seeking behavior.
+
+Interview Completion Rate
+
+Measures interview follow-through.
+
+Saved By Recruiters
+
+Acts as a market-demand signal.
+
+Profile Completeness
+
+Measures profile quality and completeness.
+
+⸻
+
+6. Skill Matching
+
+The job description was analyzed and converted into a target skill set.
+
+Target skills include:
 
 * Embeddings
 * Sentence Transformers
 * OpenSearch
 * BM25
+* Qdrant
 * Pinecone
 * Weaviate
-* Qdrant
 * FAISS
 * Semantic Search
+* Information Retrieval
 * Recommendation Systems
+* Learning To Rank
+* RAG
+* LoRA
+* QLoRA
+* PEFT
+
+Candidates receive points for:
+
+* Skill presence
+* Proficiency level
+* Skill duration
 
 ⸻
 
-Retrieval Bonus
+7. Retrieval Expertise Bonus
 
-Additional weight was assigned to retrieval-focused skills.
+Retrieval-focused skills receive additional weighting.
 
-Examples:
+Key retrieval skills:
 
+* Embeddings
 * Information Retrieval
 * Learning to Rank
 * Recommendation Systems
 * Semantic Search
 * BM25
 
+This bonus aligns the ranking system with the role’s primary responsibilities.
+
 ⸻
 
-Critical Skill Bonus
+8. Critical Skill Bonus
 
-Extra points were awarded for highly relevant skills:
+Certain skills are considered core requirements.
+
+Additional bonuses are assigned to:
 
 * Embeddings
 * Information Retrieval
 * Learning to Rank
 * Recommendation Systems
 
-⸻
-
-Skill Quality Assessment
-
-For each matching skill:
-
-* Proficiency level was evaluated
-* Skill duration was evaluated
-
-This rewarded candidates with deeper expertise rather than simple keyword matching.
+These skills directly align with retrieval and recommendation system engineering.
 
 ⸻
 
-Candidate Validation
+Ranking Pipeline
 
-Top-ranked candidates were manually inspected.
-
-Checks included:
-
-* Experience validation
-* Skill validation
-* Recruiter signal validation
-* Retrieval relevance validation
+1. Load candidate records.
+2. Compute experience score.
+3. Compute title relevance score.
+4. Compute industry score.
+5. Compute recruiter signal scores.
+6. Compute GitHub score.
+7. Compute skill-match score.
+8. Apply retrieval bonus.
+9. Apply critical skill bonus.
+10. Generate final score.
+11. Sort candidates by score.
+12. Apply candidate_id tie-break rule.
+13. Generate Top 100 submission.
 
 ⸻
 
-Final Outcome
+Tie-Breaking Strategy
 
-The final ranking system successfully identified highly relevant AI, ML, NLP, Search, and Recommendation Systems candidates while reducing the impact of keyword stuffing and improving ranking explainability.
+When multiple candidates have identical scores:
+
+1. Higher score ranks first.
+2. If scores are equal, candidate_id is sorted in ascending order.
+
+This follows the official submission requirements.
+
+⸻
+
+Output
+
+The final system produces:
+
+* Top 100 candidates
+* Final score
+* Rank
+* Human-readable reasoning
+
+Output format:
+
+candidate_id, rank, score, reasoning
+
+The final CSV passes the official validation checks.
