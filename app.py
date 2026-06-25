@@ -42,7 +42,8 @@ try:
 
     st.dataframe(
         df.head(10),
-        use_container_width=True
+        use_container_width=True,
+        hide_index=True
     )
 
     st.divider()
@@ -51,7 +52,8 @@ try:
 
     st.dataframe(
         df,
-        use_container_width=True
+        use_container_width=True,
+        hide_index=True
     )
 
     with open("submission.csv", "rb") as file:
